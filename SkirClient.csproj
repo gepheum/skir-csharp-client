@@ -11,14 +11,14 @@
     <IsPackable>true</IsPackable>
 
     <PackageId>skir_client</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Authors>Tyler Fibonacci</Authors>
     <Company>Gepheum</Company>
     <Description>Runtime library for Skir-generated C# clients.</Description>
     <PackageTags>skir;rpc;serialization;codegen</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/gepheum/skir</RepositoryUrl>
+    <RepositoryUrl>https://github.com/gepheum/skir-csharp-client</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://skir.build</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
