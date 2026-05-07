@@ -112,6 +112,8 @@ public sealed class StructAdapter<T, TBuilder> : ITypeAdapter<T> where T : struc
 
     public TypeDescriptor TypeDescriptor => _descriptor;
 
+    public Serializer<T> ToSerializer() => new(this);
+
     public bool IsDefault(T value)
     {
         foreach (var f in _orderedFields)

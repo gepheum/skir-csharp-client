@@ -203,6 +203,8 @@ public sealed class EnumAdapter<T> : ITypeAdapter<T> where T : class
 
     public TypeDescriptor TypeDescriptor => _descriptor;
 
+    public Serializer<T> ToSerializer() => new(this);
+
     public bool IsDefault(T value) => _getKindOrdinal(value) == 0;
 
     public void ToJson(T value, string? eolIndent, StringBuilder output) =>
