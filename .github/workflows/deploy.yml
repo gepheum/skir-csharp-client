@@ -1,0 +1,33 @@
+name: Deploy to NuGet
+
+on:
+  release:
+    types: [ created ]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore SkirClient.csproj
+
+      - name: Build
+        run: dotnet build SkirClient.csproj -c Release --no-restore -warnaserror
+
+      - name: Test
+        run: dotnet test SkirClientTest/SkirClientTest.csproj -c Release --no-build
+
+      - name: Pack
+        run: dotnet pack SkirClient.csproj -c Release --no-build -o artifacts
+
+      - name: Publish
+        run: dotnet nuget push artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
